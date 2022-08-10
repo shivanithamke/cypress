@@ -15,7 +15,7 @@ describe('All login test',()=>{
         loginpage.clicklogin()
         cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
              
-    });
+    })
     it('login test2',()=>{
     
        
