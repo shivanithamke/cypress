@@ -70,6 +70,8 @@ cy.get('div[class=rt-table] > div.rt-tbody > div:nth-child(1) > div > div:nth-ch
 cy.get('div[class=rt-table] > div.rt-tbody > div:nth-child(2)')
 .each(($e1,index,$list)=>{
   const text=$e1.text()
+
+  
   if(text.includes("Vega")) 
   {
     cy.get('div[class=rt-table] > div.rt-tbody > div:nth-child(1)').eq(index).then(function(fname)
