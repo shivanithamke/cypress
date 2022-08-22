@@ -5,27 +5,23 @@ import { demologin } from "./pages/demologin";
 const practicepage = new demologin();
 
 // beforeEach(() => {
-  
+
 // });
 
-describe("textbox",  ()=> {
-it('textform',()=>{
-  cy.visit("https://demoqa.com/");
-  cy.get(":nth-child(1) > :nth-child(1) > .card-body > h5").click();
-  cy.get(':nth-child(1) > .element-list > .menu-list > #item-0').click()
-      // cy.get(':nth-child(1) > .group-header > .header-wrapper').click()
-      // cy.get(':nth-child(1) > .element-list > .menu-list > #item-0').click()
-      practicepage.username("shivani");
-      practicepage.email("thamkeshivani200@gmail.com");
-      practicepage.address("pune");
-      practicepage.address1("pune");
-      practicepage.submit1();
-    });
+describe("textbox", function () {
+  // cy.visit('https://demoqa.com/links');
+  //   it("textbox", () => {
+  //     cy.get(':nth-child(1) > .group-header > .header-wrapper').click()
+  //     cy.get(':nth-child(1) > .element-list > .menu-list > #item-0').click()
+  //     practicepage.username("shivani");
+  //     practicepage.email("thamkeshivani200@gmail.com");
+  //     practicepage.address("pune");
+  //     practicepage.address1("pune");
+  //     practicepage.submit1();
+  //   });
   it("checkbox", () => {
-    cy.visit("https://demoqa.com/");
-    cy.get(":nth-child(1) > :nth-child(1) > .card-body > h5").click();
-    cy.get(':nth-child(1) > .element-list > .menu-list > #item-0').click()
-    
+    cy.visit("https://demoqa.com/links");
+    cy.get(":nth-child(1) > .group-header > .header-wrapper").click();
 
     cy.get(":nth-child(1) > .element-list > .menu-list > #item-1").click();
     cy.get(".rct-checkbox > .rct-icon").click();
@@ -40,13 +36,9 @@ it('textform',()=>{
     // ).click();
   });
   it("Radio Button", () => {
-    cy.visit("https://demoqa.com/");
-    cy.get(":nth-child(1) > :nth-child(1) > .card-body > h5").click();
-    cy.get(
-      ":nth-child(1) > .element-list > .menu-list > #item-2 > .text"
-    ).click();
-    cy.get("label[for=yesRadio]").click();
-    cy.get("p[class=mt-3]").should("be.visible");
+    cy.get("input[id=yesRadio]").should("be.checked");
+    // cy.get(":nth-child(1) > .element-list > .menu-list > #item-2").click();
+    // cy.get(".col-md-6 > :nth-child(2) > :nth-child(2)").click();
   });
 
   it("Webtable", () => {
@@ -62,25 +54,35 @@ it('textform',()=>{
     cy.get("#salary").type("34000");
     cy.get("#department").type("cs");
     cy.get("#submit").click();
-    cy.get('div[class=rt-table]').contains(':nth-child(4) > .rt-tr > :nth-child(1)','shiv').should('be.visible')
-    cy.get('.ReactTable').contains(':nth-child(4) > .rt-tr > :nth-child(2)','patil').should('be.visible')
-    
-cy.get('div[class=rt-table] > div.rt-tbody > div:nth-child(1) > div > div:nth-child(5)').contains('10000').should('be.visible')
+    cy.get("div[class=rt-table]")
+      .contains(":nth-child(4) > .rt-tr > :nth-child(1)", "shiv")
+      .should("be.visible");
+    cy.get(".ReactTable")
+      .contains(":nth-child(4) > .rt-tr > :nth-child(2)", "patil")
+      .should("be.visible");
 
-cy.get('div[class=rt-table] > div.rt-tbody > div:nth-child(2)')
-.each(($e1,index,$list)=>{
-  const text=$e1.text()
+    cy.get(
+      "div[class=rt-table] > div.rt-tbody > div:nth-child(1) > div > div:nth-child(5)"
+    )
+      .contains("10000")
+      .should("be.visible");
 
-  
-  if(text.includes("Vega")) 
-  {
-    cy.get('div[class=rt-table] > div.rt-tbody > div:nth-child(1)').eq(index).then(function(fname)
-    {
-      const firstname=fname.text()
-expect(firstname).to.equal("Cierra")
-    })
-  } 
-   })
-  
-  })
-})
+    cy.get("div[class=rt-table] > div.rt-tbody > div:nth-child(2)").each(
+      ($e1, index, $list) => {
+        const text = $e1.text();
+
+        if (text.includes("Vega")) {
+          cy.get("div[class=rt-table] > div.rt-tbody > div:nth-child(1)")
+            .eq(index)
+            .then(function (fname) {
+              const firstname = fname.text();
+              expect(firstname).to.equal("Cierra");
+            });
+        }
+      }
+    );
+  });
+});
+
+// });
+// >>>>>>> parent of 2ec6725 (added all files)

@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 describe("textbox", function () {
-  it("Radio button", () => {
+  it.skip("Radio button", () => {
     cy.visit("https://demoqa.com/");
     cy.get(":nth-child(1) > :nth-child(1) > .card-body > h5").click();
     cy.get(
